@@ -14,7 +14,7 @@ import (
 var platforms = []dagger.Platform{
 	"linux/amd64", // a.k.a. x86_64
 	"linux/arm64", // a.k.a. aarch64
-	// "linux/s390x", // a.k.a. IBM S/390
+	"linux/s390x", // a.k.a. IBM S/390
 }
 
 func Engine() error {
@@ -52,7 +52,7 @@ func Testconcurrent() error {
 	workdir := client.
 		Host().
 		Directory(".", dagger.HostDirectoryOpts{
-			Exclude: []string{"magefiles", "go.work"},
+			Exclude: []string{"magefiles", "go.work*"},
 		})
 
 	start := time.Now()
@@ -85,7 +85,7 @@ func Test() error {
 	workdir := client.
 		Host().
 		Directory(".", dagger.HostDirectoryOpts{
-			Exclude: []string{"magefiles", "go.work"},
+			Exclude: []string{"magefiles", "go.work*"},
 		})
 
 	var errors error
@@ -101,8 +101,12 @@ func Test() error {
 }
 
 func innerBuild(client *dagger.Client) []*dagger.Container {
-	workdir := client.Host().
-		Directory(".", dagger.HostDirectoryOpts{Exclude: []string{"magefiles"}})
+	workdir := client.
+		Host().
+		Directory(".", dagger.HostDirectoryOpts{
+			Exclude: []string{"magefiles", "go.work*"},
+		})
+
 	containers := []*dagger.Container{}
 	for _, platform := range platforms {
 		containers = append(containers, client.
@@ -148,7 +152,6 @@ func Export() error {
 		platformVariants = append(platformVariants, client.Container(dagger.ContainerOpts{Platform: platforms[i]}).WithRootfs(output))
 	}
 
-	fmt.Println(len(platformVariants))
 	_, err = client.
 		Container().
 		Export(ctx, "dagger-demo.tar",
