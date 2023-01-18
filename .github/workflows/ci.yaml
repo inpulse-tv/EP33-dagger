@@ -20,3 +20,15 @@ jobs:
       - run: mage testconcurrent
       - run: mage build
       - run: mage export
+
+  ci-concurrent:
+    needs: ["ci"]
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-go@v3
+        with:
+          go-version: "^1.19.2"
+      - name: Install Mage
+        run: go install github.com/magefile/mage@300bbc868ba8f2c15b35e09df7e8804753cac00d
+      - run: mage testconcurrent
