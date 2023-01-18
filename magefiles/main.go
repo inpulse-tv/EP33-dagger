@@ -134,7 +134,7 @@ func Build() error {
 	return nil
 }
 
-func Push() error {
+func Export() error {
 	ctx := context.Background()
 
 	client, err := dagger.Connect(ctx, dagger.WithLogOutput(os.Stdout))
