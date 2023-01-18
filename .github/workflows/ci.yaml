@@ -4,6 +4,7 @@ on:
   push:
     branches:
       - dev
+      - main
 
 jobs:
   ci:
@@ -16,5 +17,6 @@ jobs:
       - name: Install Mage
         run: go install github.com/magefile/mage@300bbc868ba8f2c15b35e09df7e8804753cac00d
       - run: mage test
+      - run: mage testconcurrent
       - run: mage build
-      - run: mage push
+      - run: mage export
