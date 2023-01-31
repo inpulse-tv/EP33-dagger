@@ -1,6 +1,6 @@
 # Dagger
 
-Ce dépôt contient les ressources relatives à l'épisode X de inpulse.tv  
+Ce dépôt contient les ressources relatives à l'épisode 33 de inpulse.tv 👉 https://youtu.be/m5mauLiCp3Y
 
 ## Pré-requis 
 
