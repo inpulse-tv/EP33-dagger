@@ -1,6 +1,8 @@
 cloud.google.com/go v0.26.0/go.mod h1:aQUYkXzVsufM+DwF1aE+0xfcU+56JwCaLick0ClmMTw=
 dagger.io/dagger v0.4.3 h1:rp+Ho/iqLAAkJkn7g9BslS3+FYLrrq1Th9fmgkk3C00=
 dagger.io/dagger v0.4.3/go.mod h1:wr3lf4B+yV0CP2rQlYe5fHt0RgKicy7wxA9rBjxW0nI=
+dagger.io/dagger v0.4.4 h1:znUXUeHaj+QN4+EVXmbfBeE6ctkmHVevJYHpleD/YyI=
+dagger.io/dagger v0.4.4/go.mod h1:wr3lf4B+yV0CP2rQlYe5fHt0RgKicy7wxA9rBjxW0nI=
 github.com/99designs/gqlgen v0.17.2/go.mod h1:K5fzLKwtph+FFgh9j7nFbRUdBKvTcGnsta51fsMTn3o=
 github.com/AndreasBriese/bbloom v0.0.0-20190306092124-e2d15f34fcf9/go.mod h1:bOvUY6CB00SOBii9/FifXqc0awNKxLFCL/+pkDPuyl8=
 github.com/BurntSushi/toml v0.3.1/go.mod h1:xHWCNGjB5oqiDr8zfno3MHue2Ht5sIBksp03qcyfWMU=

@@ -3,7 +3,7 @@ module github.com/inpulse-tv/dagger-demo/magefiles
 go 1.19
 
 require (
-	dagger.io/dagger v0.4.3
+	dagger.io/dagger v0.4.4
 	github.com/sourcegraph/conc v0.2.0
 	go.uber.org/multierr v1.9.0
 )

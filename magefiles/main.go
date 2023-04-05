@@ -30,6 +30,7 @@ func Engine() error {
 
 func runUnitTest(client *dagger.Client, workdir *dagger.Directory, ctx context.Context, platform dagger.Platform) error {
 	_, err := client.
+		Pipeline(string(platform)).
 		Container(dagger.ContainerOpts{Platform: platform}).
 		From("golang:1.19.3-alpine").
 		WithDirectory("/go/src/dagger-demo", workdir).
@@ -58,7 +59,7 @@ func Testconcurrent() error {
 	start := time.Now()
 	for _, platform := range platforms {
 		p.Go(func() error {
-			return runUnitTest(client, workdir, ctx, platform)
+			return runUnitTest(client.Pipeline("Unittest").Pipeline("Concurrent"), workdir, ctx, platform)
 		})
 	}
 	res := p.Wait()
@@ -91,7 +92,7 @@ func Test() error {
 	var errors error
 	start := time.Now()
 	for _, platform := range platforms {
-		err := runUnitTest(client, workdir, ctx, platform)
+		err := runUnitTest(client.Pipeline("Unittest"), workdir, ctx, platform)
 		if err != nil {
 			return multierr.Append(errors, err)
 		}
